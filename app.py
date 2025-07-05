@@ -8,6 +8,26 @@ from rembg.sessions import sessions_names
 # Initialize session storage
 sessions = {}
 
+# Model descriptions
+MODEL_INFO = {
+    "u2net": "General purpose (recommended)",
+    "u2netp": "Lightweight, faster but less accurate",
+    "u2net_human_seg": "Optimized for people",
+    "u2net_cloth_seg": "Optimized for clothing",
+    "silueta": "Good for objects with clear edges",
+    "isnet-general-use": "High quality, general purpose",
+    "isnet-anime": "Optimized for anime/manga characters",
+    "sam": "Segment Anything Model (experimental)",
+    "birefnet-general": "State-of-the-art quality (slower)",
+    "birefnet-general-lite": "Balanced quality and speed",
+    "birefnet-portrait": "Best for portrait photos",
+    "birefnet-dis": "Good for complex scenes",
+    "birefnet-hrsod": "High-resolution salient objects",
+    "birefnet-cod": "Camouflaged object detection",
+    "birefnet-massive": "Highest quality (very slow)",
+    "bria-rmbg": "Commercial-grade model",
+}
+
 def process_image(
     image: Image.Image,
     model: str = "u2net",
@@ -44,6 +64,14 @@ with gr.Blocks(title="Background Remover") as demo:
     gr.Markdown("""
     # Background Remover
     Remove backgrounds from images using various AI models.
+    
+    ### 📸 Model Recommendations:
+    - **People/Portraits**: u2net_human_seg, birefnet-portrait
+    - **Anime/Illustrations**: isnet-anime
+    - **Products/Objects**: u2net, birefnet-general
+    - **Clothing**: u2net_cloth_seg
+    - **Best Quality**: birefnet-massive (slow), birefnet-general
+    - **Fastest**: u2netp, birefnet-general-lite
     """)
     
     with gr.Row():
@@ -54,8 +82,16 @@ with gr.Blocks(title="Background Remover") as demo:
                 image_mode="RGBA",
             )
             
+            # Create choices with descriptions
+            model_choices = []
+            for model_name in sessions_names:
+                if model_name in MODEL_INFO:
+                    model_choices.append((f"{model_name} - {MODEL_INFO[model_name]}", model_name))
+                else:
+                    model_choices.append((model_name, model_name))
+            
             model = gr.Dropdown(
-                choices=sessions_names,
+                choices=model_choices,
                 value="u2net",
                 label="Model",
                 info="Choose the model for background removal"

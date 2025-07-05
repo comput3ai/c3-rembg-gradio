@@ -10,7 +10,9 @@ COPY . .
 
 RUN python -m pip install ".[cpu,cli]"
 RUN pip install gradio
-RUN rembg d u2net
+
+# Don't download models during build - they'll be downloaded on first use
+# or can be pre-downloaded in specific deployment environments
 
 EXPOSE 7860
 CMD ["python", "app.py"]
