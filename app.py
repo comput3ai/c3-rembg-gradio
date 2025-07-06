@@ -169,20 +169,11 @@ with gr.Blocks(title="Background Remover") as demo:
     
     gr.Examples(
         examples=[
-            ["examples/girl-1.jpg", "u2net", False, 240, 10, 10, False, False],
-            ["examples/animal-1.jpg", "u2net", False, 240, 10, 10, False, False],
-            ["examples/car-1.jpg", "u2net", False, 240, 10, 10, False, False],
+            ["examples/girl-1.jpg"],
+            ["examples/animal-1.jpg"],
+            ["examples/car-1.jpg"],
         ],
-        inputs=[
-            input_image,
-            model,
-            alpha_matting,
-            alpha_matting_foreground_threshold,
-            alpha_matting_background_threshold,
-            alpha_matting_erode_size,
-            only_mask,
-            post_process_mask,
-        ],
+        inputs=[input_image],
     )
 
 if __name__ == "__main__":

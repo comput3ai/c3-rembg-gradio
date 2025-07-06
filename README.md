@@ -64,17 +64,29 @@ The interface will be available at `http://localhost:7860`
 
 ### Available Models
 
-- 🎯 **u2net** (default): General purpose, good balance
-- 🎯 **u2netp**: Lightweight version of u2net
-- 👤 **u2net_human_seg**: Optimized for people
-- 👔 **u2net_cloth_seg**: Optimized for clothing
-- 🎌 **isnet-anime**: Specialized for anime characters
-- 🔍 **isnet-general-use**: High quality general purpose
-- 🤖 **sam**: Segment Anything Model
-- ✨ **birefnet-general**: State-of-the-art general purpose
-- 🚀 **birefnet-general-lite**: Faster BiRefNet variant
-- 👨 **birefnet-portrait**: Optimized for portraits
-- 🎨 **silueta**: Alternative segmentation model
+#### U2Net Family
+- 🎯 **u2net** (default): A pre-trained model for general use cases
+- ⚡ **u2netp**: A lightweight version of u2net model
+- 👤 **u2net_human_seg**: A pre-trained model for human segmentation
+- 👔 **u2net_cloth_seg**: A pre-trained model for clothes parsing from human portrait
+
+#### ISNet Models
+- 🔍 **isnet-general-use**: A new pre-trained model for general use cases
+- 🎌 **isnet-anime**: A high-accuracy segmentation for anime character
+
+#### BiRefNet Family
+- ✨ **birefnet-general**: A pre-trained model for general use cases
+- 🚀 **birefnet-general-lite**: A light pre-trained model for general use cases
+- 👨 **birefnet-portrait**: A pre-trained model for human portraits
+- 🎯 **birefnet-dis**: A pre-trained model for dichotomous image segmentation (DIS)
+- 🔬 **birefnet-hrsod**: A pre-trained model for high-resolution salient object detection (HRSOD)
+- 🕵️ **birefnet-cod**: A pre-trained model for concealed object detection (COD)
+- 💪 **birefnet-massive**: A pre-trained model with massive dataset
+
+#### Other Models
+- 🤖 **sam**: A pre-trained model for any use cases
+- 🎨 **silueta**: Same as u2net but the size is reduced to 43Mb
+- 🏢 **bria-rmbg**: Commercial-grade background removal model (Bria AI)
 
 ### Advanced Options
 
