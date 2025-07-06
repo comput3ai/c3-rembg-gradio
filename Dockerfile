@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y curl && apt-get clean && rm -rf /var/li
 
 COPY . .
 
-RUN python -m pip install ".[cpu,cli]"
+RUN python -m pip install ".[gpu,cli]"
 RUN pip install gradio
 
 # Don't download models during build - they'll be downloaded on first use
